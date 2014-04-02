@@ -1,6 +1,7 @@
 var MEETUP_GROUP_NAME = 'VegasJS';
 var MEETUP_API_KEY = '';
 
+
 var meetup = require('meetup-api')(MEETUP_API_KEY),
     levelup = require('levelup'),
     Q = require('q'),
@@ -17,6 +18,8 @@ var logger = new (winston.Logger)({
 // Initialize local cache using leveldb
 var cache = levelup('./cache');
 
+
+if (!MEETUP_API_KEY) logger.error("set MEETUP_API_KEY in app.js"); return false;
 
 /**
  * Retrieve a cached list of attendees of a gevent event.
@@ -93,7 +96,7 @@ function getEvents() {
         });
 
         // Throw error , if cache has an error
-        if (attendees.errors) deferred.reject(attendees.errors.pop().message);
+        if (events.errors) deferred.reject(events.errors.pop().message);
 
         deferred.resolve(events);
       });
