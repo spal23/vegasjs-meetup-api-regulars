@@ -1,5 +1,5 @@
 {
-  "name": "meetup-api-regulars",
+  "name": "vegasjs-meetup-api-regulars",
   "version": "0.0.0",
   "dependencies": {
     "levelup": "0.18.2",
